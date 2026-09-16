@@ -1,0 +1,19 @@
+name: flask-build
+
+on:
+  push:
+    paths:
+      - ".github/workflows/flaks-build.yml"
+      - "api/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build-flaks-api
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -U pip==26.0.0
+      - run: pip install -r requirements.txt
+        working-directory: ./api
+
